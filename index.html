@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Version Control Demo</title>
+</head>
+<body>
+  <h1>Git App Demo</h1>
+  <textarea id="code" rows="10" cols="50" placeholder="Edit your code..."></textarea>
+  <button onclick="commit()">Commit</button>
+  <ul id="history"></ul>
+
+  <script>
+    let versions = [];
+    function commit() {
+      const code = document.getElementById('code').value;
+      const timestamp = new Date().toLocaleString();
+      versions.push({ code, timestamp });
+      updateHistory();
+    }
+
+    function updateHistory() {
+      const history = document.getElementById('history');
+      history.innerHTML = versions.map((v, i) => `<li>Version ${i + 1} - ${v.timestamp}</li>`).join('');
+    }
+  </script>
+</body>
+</html>
